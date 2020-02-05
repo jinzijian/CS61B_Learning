@@ -83,15 +83,19 @@ public class LinkedListDeque<T> {
 
 
 
-	public T getRecursive(int index, StuffNode sentinelF) {
-		if(index > size-1 ){
+	private T getRecursive(int index, StuffNode p) {
+		if (index == 0) {
+			return p.item;
+		} else {
+			return getRecursive(index - 1, p.next);
+		}
+	}
+
+	public T getRecursive(int index) {
+		if (index > size) {
 			return null;
 		}
-		if(index == 0 ){
-			return sentinelF.next.item;
-		}
-		removeFirst();
-		return getRecursive(index-1, sentinelF.next);
+		return getRecursive(index, sentinelF.next);
 	}
 
 	public LinkedListDeque(LinkedListDeque other) {
