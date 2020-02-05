@@ -38,15 +38,13 @@ public class LinkedListDeque<T> {
 	public void addLast(T item) {
 		StuffNode tmp = sentinelL.prev;
 		tmp.next = new StuffNode( item, tmp, sentinelL);
+		sentinelL.prev = tmp.next;
 		size += 1;
 	}
 	public boolean isEmpty() {
-		if ( size!= 0 ){
-			return true;
-		}else{
-			return false;
-		}
+		return size == 0;
 	}
+
 	public int size() {
 		return size;
 	}
@@ -61,6 +59,7 @@ public class LinkedListDeque<T> {
 
 	}
 	public T removeFirst() {
+		if(isEmpty()) return null;
 		StuffNode toRemove = sentinelF.next;
 		StuffNode tmp = sentinelF.next.next;
 		sentinelF.next = tmp;
@@ -69,6 +68,7 @@ public class LinkedListDeque<T> {
 		return toRemove.item;
 	}
 	public T removeLast() {
+		if(isEmpty()) return null;
 		StuffNode toRemove = sentinelL.prev;
 		StuffNode tmp = sentinelL.prev.prev;
 		tmp.next = sentinelL;
@@ -107,5 +107,13 @@ public class LinkedListDeque<T> {
 		return getRecursive(index, sentinelF.next);
 	}
 
+	public static void main(String[] args) {
+		LinkedListDeque<Integer> res = new LinkedListDeque<>( 1);
+		res.printDeque();
+		res.addFirst(2);
+		res.printDeque();
+		res.addLast(3);
+		System.out.println(res.size());
 
+	}
  }
