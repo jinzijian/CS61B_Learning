@@ -23,8 +23,8 @@ public class LinkedListDeque<T> {
 		size = 0;
 	}
 	public LinkedListDeque(T item) {
-		sentinelF = new StuffNode((T)"null", null, null);
-		sentinelL = new StuffNode((T)"null", null, null);
+		sentinelF = new StuffNode( null, null, null);
+		sentinelL = new StuffNode(null, null, null);
 		sentinelF.next = new StuffNode(item, sentinelF, sentinelL);
 		sentinelL.prev = sentinelF.next;
 		size = 1;
@@ -107,12 +107,5 @@ public class LinkedListDeque<T> {
 		return getRecursive(index, sentinelF.next);
 	}
 
-	public LinkedListDeque(LinkedListDeque other) {
-		sentinelF = new StuffNode( null, null, sentinelL);
-		sentinelL = new StuffNode( null, sentinelF, null);
-		size = 0;
-		for (int i = 0; i < other.size(); i++) {
-			addLast((T) other.get(i));
-		}
-	}
+
  }
