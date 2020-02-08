@@ -3,12 +3,14 @@ public class ArrayDeque <T> {
     private int size;
     private int nextFirst;
     private int nextLast;
-    public ArrayDeque(){
+
+    public ArrayDeque() {
         items = (T[]) new Object[8];
         size = 0;
         nextFirst = items.length/2;
         nextLast = nextFirst+1;
     }
+
     public void resizebig(int cap) {
         T[] a = (T[]) new Object[cap];
         System.arraycopy(items, nextLast, a, a.length/2, items.length-nextLast);
@@ -17,6 +19,7 @@ public class ArrayDeque <T> {
         nextLast = a.length + items.length;
         items = a;
     }
+
     public void addFirst(T item) {
         if(items.length == size) {
             resizebig(size * 4);
@@ -29,6 +32,7 @@ public class ArrayDeque <T> {
             nextFirst -= 1;
         }
     }
+
     public void addLast(T item) {
         if(items.length == size) {
             resizebig(size * 4);
@@ -41,8 +45,14 @@ public class ArrayDeque <T> {
             nextLast += 1;
         }
     }
+
     public boolean isEmpty() {
         return size == 0;
+    }
+
+    public static void main(String[] args) {
+        ArrayDeque<Integer> res = new ArrayDeque<>();
+        res.addFirst(1);
     }
 
 }
