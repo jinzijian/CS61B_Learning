@@ -107,13 +107,4 @@ public class LinkedListDeque<T> {
 		return getRecursive(index, sentinelF.next);
 	}
 
-	public static void main(String[] args) {
-		LinkedListDeque<Integer> res = new LinkedListDeque<>( 1);
-		res.printDeque();
-		res.addFirst(2);
-		res.printDeque();
-		res.addLast(3);
-		System.out.println(res.size());
-
-	}
  }
